@@ -10,7 +10,7 @@ namespace UserRegistration1
     {
         public enum ExceptionType
         {
-            INVALID_NAME,
+            INVALID_NAME, INVALID_EMAIL,
         }
 
         private readonly ExceptionType type;
