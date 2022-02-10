@@ -94,5 +94,29 @@ namespace UserRegistrationMsTest
                 Assert.AreEqual("Invalid Email address.", e.Message);
             }
         }
+        [TestMethod]
+        public void GivenMobileNumber_WhenValidate_ShouldReturnTrue()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string mobileNumber = "91 6688342519";
+            //Act
+            bool result = user.ValidateMobileNo(mobileNumber);
+            //Assert
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void GivenInvalidMobileNumber_ShouldReturnFalse()
+        {
+            try
+            {
+                ValidateUserRegistration user = new ValidateUserRegistration();
+                user.ValidateMobileNo("918888799769");
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid Mobile Number.", e.Message);
+            }
+        }
     }
 }

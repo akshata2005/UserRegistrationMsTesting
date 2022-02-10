@@ -12,6 +12,7 @@ namespace UserRegistration1
         private static string Regex_FirstName = "^[A-Z]{1}[a-z]{2,}$";
         private static string Regex_LastName = "^[A-Z]{1}[a-z]{2,}$";
         private static string Regex_Email = "^[0-9a-zA-Z]{1,}([._+-][0-9a-zA-Z]{0,})*[@][0-9a-zA-Z]{1,}.[a-zA-Z]{2,3}(.[a-zA-Z]{2,3})?$";
+        private static string Regex_MobileNo = "^[9]{1}[1]{1}\\s[6-9]{1}[0-9]{9}$";
         public bool ValidateFirstName(string FN)
         {
             try
@@ -52,6 +53,20 @@ namespace UserRegistration1
             {
                 throw new CustomException
                     (CustomException.ExceptionType.INVALID_EMAIL, "Invalid User Email.");
+            }
+        }
+        public bool ValidateMobileNo(string MobileNo)
+        {
+            try
+            {
+
+                Regex rg = new Regex(Regex_MobileNo);
+                return rg.IsMatch(MobileNo);
+            }
+            catch (CustomException)
+            {
+                throw new CustomException
+                    (CustomException.ExceptionType.INVALID_MOBILE_NUMBER, "Invalid User Mobile Number.");
             }
         }
     }
