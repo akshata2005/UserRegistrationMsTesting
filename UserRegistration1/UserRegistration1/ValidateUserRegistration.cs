@@ -10,19 +10,33 @@ namespace UserRegistration1
     public class ValidateUserRegistration
     {
         private static string Regex_FirstName = "^[A-Z]{1}[a-z]{2,}$";
+        private static string Regex_LastName = "^[A-Z]{1}[a-z]{2,}$";
         public bool ValidateFirstName(string FN)
         {
-            return Regex.IsMatch(FN, Regex_FirstName);
-        }
-        public void PrintResult(bool result)
-        {
-            if (result)
+            try
             {
-                Console.WriteLine("Valid.");
+
+                Regex rg = new Regex(Regex_FirstName);
+                return rg.IsMatch(FN);
             }
-            else
+            catch (CustomException)
             {
-                Console.WriteLine("Invalid.");
+                throw new CustomException
+                    (CustomException.ExceptionType.INVALID_NAME, "Invalid User First Name.");
+            }
+        }
+        public bool ValidateLastName(string LN)
+        {
+            try
+            {
+
+                Regex rg = new Regex(Regex_LastName);
+                return rg.IsMatch(LN);
+            }
+            catch (CustomException)
+            {
+                throw new CustomException
+                    (CustomException.ExceptionType.INVALID_NAME, "Invalid User Last Name.");
             }
         }
     }

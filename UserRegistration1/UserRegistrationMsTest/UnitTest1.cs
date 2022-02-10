@@ -18,5 +18,19 @@ namespace UserRegistrationMsTest
             //Assert
             Assert.IsTrue(result);
         }
+        [TestMethod]
+        public void GivenInvalidFirstName_WhenNameNotStartingWithUpper_ShouldReturnFalse()
+        {
+            try
+            {
+                ValidateUserRegistration user = new ValidateUserRegistration();
+                bool result = user.ValidateFirstName("akshata");
+
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid User First Name.", e.Message);
+            }
+        }
     }
 }
