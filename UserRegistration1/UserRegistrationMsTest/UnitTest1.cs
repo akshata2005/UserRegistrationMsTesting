@@ -118,5 +118,86 @@ namespace UserRegistrationMsTest
                 Assert.AreEqual("Invalid Mobile Number.", e.Message);
             }
         }
+        [TestMethod]
+        public void GivenPassword_WhenValidate_ShouldReturnTrue()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string password = "Welcome@123";
+            //Act
+            bool result = user.ValidatePassword(password);
+            //Assert
+            Assert.IsTrue(result);
+        }
+        [TestMethod]
+        public void GivenInvalidPassword_ShouldReturnFalse()
+        {
+            try
+            {
+                ValidateUserRegistration user = new ValidateUserRegistration();
+                user.ValidatePassword("@Kfc");
+            }
+            catch (CustomException e)
+            {
+                Assert.AreEqual("Invalid Password.", e.Message);
+            }
+        }
+
+        //Sad Test Cases(Test Cases Fail The Entry)
+        [TestMethod]
+        public void GivenUserFirstName_WhenValidate_ShouldReturnFalse()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string firstName = "har";
+            //Act
+            bool result = user.ValidateFirstName(firstName);
+            //Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenUserLastName_WhenValidate_ShouldReturnFalse()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string lastName = "Pa";
+            //Act
+            bool result = user.ValidateFirstName(lastName);
+            //Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenEmailId_WhenValidate_ShouldReturnFalse()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string email = "_harshupatil@gmail0301com";
+            //Act
+            bool result = user.ValidateEmail(email);
+            //Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenMobileNumber_WhenValidate_ShouldReturnFalse()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string mobileNumber = "916688342519";
+            //Act
+            bool result = user.ValidateMobileNo(mobileNumber);
+            //Assert
+            Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenPassword_WhenValidate_ShouldReturnFalse()
+        {
+            //Arrange
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            string password = "welcome123";
+            //Act
+            bool result = user.ValidatePassword(password);
+            //Assert
+            Assert.IsFalse(result);
+        }
     }
 }
