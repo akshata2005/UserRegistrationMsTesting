@@ -149,7 +149,7 @@ namespace UserRegistrationMsTest
         {
             //Arrange
             ValidateUserRegistration user = new ValidateUserRegistration();
-            string firstName = "har";
+            string firstName = "aksh";
             //Act
             bool result = user.ValidateFirstName(firstName);
             //Assert
@@ -160,7 +160,7 @@ namespace UserRegistrationMsTest
         {
             //Arrange
             ValidateUserRegistration user = new ValidateUserRegistration();
-            string lastName = "Pa";
+            string lastName = "Sa";
             //Act
             bool result = user.ValidateFirstName(lastName);
             //Assert
@@ -171,7 +171,7 @@ namespace UserRegistrationMsTest
         {
             //Arrange
             ValidateUserRegistration user = new ValidateUserRegistration();
-            string email = "_harshupatil@gmail0301com";
+            string email = "_akshatasawant@gmail0301com";
             //Act
             bool result = user.ValidateEmail(email);
             //Assert
@@ -198,6 +198,87 @@ namespace UserRegistrationMsTest
             bool result = user.ValidatePassword(password);
             //Assert
             Assert.IsFalse(result);
+        }
+        [TestMethod]
+        public void GivenValidFirstName_WhenTrue_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = true;
+            bool result = user.ValidateFirstName("Akshata");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenInvalidFirstName_WhenFalse_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = false;
+            bool result = user.ValidateFirstName("akshata");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenValidLastName_WhenTrue_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = true;
+            bool result = user.ValidateLastName("Sawant");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenInvalidLastName_WhenFalse_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = false;
+            bool result = user.ValidateLastName("sawant");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenValidEmail_WhenTrue_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = true;
+            bool result = user.ValidateEmail("Akshatasawant0301@gmail.com");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenInvalidEmail_WhenFalse_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = false;
+            bool result = user.ValidateEmail("_akshatasawant0301@gmail.com");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenValidMobileNo_WhenTrue_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = true;
+            bool result = user.ValidateMobileNo("91 8978654678");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenInvalidMobileNo_WhenFalse_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = false;
+            bool result = user.ValidateMobileNo("918978654678");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenValidPassword_WhenTrue_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = true;
+            var result = user.ValidatePassword("Akshata@0301");
+            Assert.AreEqual(expectedResult, result);
+        }
+        [TestMethod]
+        public void GivenInvalidPassword_WhenFalse_ShouldReturnTrueUsingLambdaExpression()
+        {
+            ValidateUserRegistration user = new ValidateUserRegistration();
+            bool expectedResult = false;
+            var result = user.ValidatePassword("akshata");
+            Assert.AreEqual(expectedResult, result);
+
         }
     }
 }

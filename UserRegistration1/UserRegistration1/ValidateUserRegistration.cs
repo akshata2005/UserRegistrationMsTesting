@@ -96,5 +96,21 @@ namespace UserRegistration1
                 Console.WriteLine("Invalid.");
             }
         }
+        public string CheckMultipleEmail(string Mail1, string Mail2, string Mail3)
+        {
+            ValidateUserRegistration Mail = new ValidateUserRegistration();
+            bool MailEntry1 = Mail.ValidateEmail(Mail1);
+            bool MailEntry2 = Mail.ValidateEmail(Mail2);
+            bool MailEntry3 = Mail.ValidateEmail(Mail3);
+            if (MailEntry1 && MailEntry2 && MailEntry3)
+                return "Entry is Succesfull";
+            else
+                return "Entry is Fail";
+        }
+        public static Func<string, bool> validateUserName = name => Regex.IsMatch(name, Regex_FirstName);
+        public static Func<string, bool> validateUserEmail = email => Regex.IsMatch(email, Regex_Email);
+        public static Func<string, bool> validateUserMobileNo = mobileNo => Regex.IsMatch(mobileNo, Regex_MobileNo);
+        public static Func<string, bool> validateUserPassword = password => Regex.IsMatch(password, Regex_Password);
     }
 }
+
